@@ -17,3 +17,16 @@ while (randomList.length < 5) {
     }
 }
 console.log(randomList);
+
+//comunico all'utente i numeri estratti e il regolamento
+const timer = 30;
+alert(`ricorda i ${randomList.length} numeri che vedi in seguito:
+
+${randomList[0]}
+${randomList[1]}
+${randomList[2]}
+${randomList[3]}
+${randomList[4]}
+
+hai ${timer} secondi per riscriverli
+`);
