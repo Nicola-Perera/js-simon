@@ -16,11 +16,11 @@ while (randomList.length < 5) {
         randomList.push(randomNumber);
     }
 }
-console.log(randomList);
+// console.log(randomList);
 
 //comunico all'utente i numeri estratti e il regolamento
 const timer = 30;
-alert(`hai ${timer} secondi per ricordare i ${randomList.length} numeri che vedi in seguito:
+alert(`Ricorda i seguenti ${randomList.length} numeri e riscrivili ${timer} secondi dopo l'OK:
 
 ${randomList[0]}
 ${randomList[1]}
@@ -29,7 +29,39 @@ ${randomList[3]}
 ${randomList[4]}
 `);
 
-setTimeout(whichNumbers(randomList), 10000);
+setTimeout(function() {
+    const userNumbers = [];
+
+    while (userNumbers.length < randomList.length) {
+        const userNumber = prompt('quale numero hai visto?');
+        const number = parseInt(userNumber);
+       
+        if (userNumbers.includes(number)) {
+            alert('NUMERO GIà INSERITO !! scrivi un altro numero')
+        }
+        else if (userNumber === '') {
+            alert('VALORE NULLO !! devi inserire un numero')
+        }
+        else {
+            userNumbers.push(number);
+        }
+    }
+
+    // verifico quanti e quali numeri ha indovinato l'utente
+    const correctNumbers = []
+    userNumbers.forEach((userNumber) => {
+        randomList.forEach((randomNumber) => {
+            if ( randomNumber == userNumber) {
+                correctNumbers.push(userNumber);
+            }
+        })
+    })
+    // console.log(userNumbers);
+    // console.log(correctNumbers);
+
+    alert(`numeri indovinati ${correctNumbers.length}/${randomList.length} :
+    ${correctNumbers}`);
+}, timer * 1000);
 
 
 //my functions
@@ -46,7 +78,8 @@ function whichNumbers (randomList) {
             alert('VALORE NULLO !! devi inserire un numero')
         }
         else {
-            userNumbers.push(parseInt(userNumber));
+            const number = parseInt(userNumber);
+            userNumbers.push(number);
         }
     }
     console.log(userNumbers);
