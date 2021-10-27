@@ -20,13 +20,37 @@ console.log(randomList);
 
 //comunico all'utente i numeri estratti e il regolamento
 const timer = 30;
-alert(`ricorda i ${randomList.length} numeri che vedi in seguito:
+alert(`hai ${timer} secondi per ricordare i ${randomList.length} numeri che vedi in seguito:
 
 ${randomList[0]}
 ${randomList[1]}
 ${randomList[2]}
 ${randomList[3]}
 ${randomList[4]}
-
-hai ${timer} secondi per riscriverli
 `);
+
+setTimeout(whichNumbers(randomList), 10000);
+
+
+//my functions
+function whichNumbers (randomList) {
+    const userNumbers = [];
+
+    while (userNumbers.length < randomList.length) {
+        const userNumber = prompt('quale numero hai visto?');
+       
+        if (userNumbers.includes(userNumber)) {
+            alert('NUMERO GIà INSERITO !! scrivi un altro numero')
+        }
+        else if (userNumber === '') {
+            alert('VALORE NULLO !! devi inserire un numero')
+        }
+        else {
+            parseInt(userNumber);
+            userNumbers.push(userNumber);
+        }
+    }
+    console.log(userNumbers);
+}
+
+
