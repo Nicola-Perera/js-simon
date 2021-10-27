@@ -46,8 +46,7 @@ function whichNumbers (randomList) {
             alert('VALORE NULLO !! devi inserire un numero')
         }
         else {
-            parseInt(userNumber);
-            userNumbers.push(userNumber);
+            userNumbers.push(parseInt(userNumber));
         }
     }
     console.log(userNumbers);
